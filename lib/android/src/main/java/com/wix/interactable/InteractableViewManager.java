@@ -57,8 +57,11 @@ public class InteractableViewManager extends ViewGroupManager<InteractableView> 
                 return;
             }
             case COMMAND_SNAP_TO: {
-                int snapPoint = args.getMap(0).getInt("index");
-                view.snapTo(snapPoint);
+                try {
+                    int snapPoint = args.getMap(0).getInt("index");
+                    view.snapTo(snapPoint);
+                } catch (ClassCastException e) {
+                }
                 return;
             }
             case COMMAND_CHANGE_POSITION: {
